@@ -4,7 +4,7 @@
     align-items: center;
     padding: 0 1em;
     color: #425F57;
-    background-color: #CFFF8D;
+    background-color: #f2f2f283;
 }
 
 .menu div {
@@ -26,15 +26,17 @@
 }
 
 .menu a {
-    padding: 0 2em;
+    padding: 1em;
     color: #425F57;
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
     white-space: nowrap;
+    border: 2px solid #425F57;
+    border-radius: 14px;
 }
 
 .menu a:hover {
-    color: #749F82;
-    text-decoration: underline;
+    background-color: #425F57;
+    color: #CFFF8D;
 }

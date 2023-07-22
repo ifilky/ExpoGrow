@@ -17,6 +17,7 @@ const Carrossel = () => {
         navigation={true}
         pagination={{clickable:true}}
         className='swiper-container'>
+            <h1 className='title'>Produtos Orgânicos, Amor e Cuidado</h1>
             <SwiperSlide className='slide-item'>
                 <img src="/img/carousel3.jpg" alt="banner da página do terra viva" />  
             </SwiperSlide>

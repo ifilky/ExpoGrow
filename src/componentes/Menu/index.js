@@ -5,13 +5,11 @@ const Menu = () => {
         <header className='menu'>
             <div>
                 <img src='/img/logotipo.png' alt='logo da marca javacoffee'/>
-                <h1>TerraViva</h1>
+                <h1>ExpoGrow</h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href='http://localhost:3000'>Início</a></li>
-                    <li><a href='http://localhost:3000'>Colaboradores</a></li>
-                    <li><a href='http://localhost:3000'>Faça Parte</a></li>
+                    <li><a href='#form'>Divulgue seu produto</a></li>
                 </ul>
             </nav>
         </header>

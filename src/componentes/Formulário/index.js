@@ -9,7 +9,7 @@ const Formulario = (props) => {
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
     const [imagem, setImagem] = useState('')
-    const [time, setTime] = useState('')
+    const [time, setTime] = useState('Frutas e Vegetais')
 
     const aoEnviar = (evento) =>  {
         evento.preventDefault()
@@ -22,13 +22,12 @@ const Formulario = (props) => {
         setNome('')
         setCargo('')
         setImagem('')
-        setTime('')
     }
 
     return (
-        <section className='formulario'>
+        <section id='form' className='formulario'>
             <form onSubmit={aoEnviar}>
-                <h2>Preencha os campos para criar os dados do colaborador</h2>
+                <h2>Preencha os campos para criar os dados da exposição</h2>
                 <CampoTexto 
                     obrigatorio={true}
                     label="Nome da empresa ou pessoa responsável"
@@ -46,7 +45,7 @@ const Formulario = (props) => {
                 <CampoTexto
                     obrigatorio={true}
                     label="Imagem"
-                    placeholder="Informe o endereço da imagem do produto"
+                    placeholder="Informe o URL da imagem do produto"
                     valor={imagem}
                     aoAlterado={valor => setImagem(valor)}
                 />
