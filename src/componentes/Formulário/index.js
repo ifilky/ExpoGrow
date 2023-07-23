@@ -7,21 +7,25 @@ import './Formulario.css'
 const Formulario = (props) => {
 
     const [nome, setNome] = useState('')
-    const [cargo, setCargo] = useState('')
+    const [contato, setContato] = useState('')
+    const [produto, setProduto] = useState('')
     const [imagem, setImagem] = useState('')
-    const [time, setTime] = useState('Frutas e Vegetais')
+    const [categoria, setCategoria] = useState('')
 
     const aoEnviar = (evento) =>  {
         evento.preventDefault()
         props.aoColaboradorCadastrado({
             nome,
-            cargo,
+            contato,
+            produto,
             imagem,
-            time
+            categoria
         })
         setNome('')
-        setCargo('')
+        setContato('')
+        setProduto('')
         setImagem('')
+        setCategoria('')
     }
 
     return (
@@ -35,12 +39,19 @@ const Formulario = (props) => {
                     valor={nome}
                     aoAlterado={valor => setNome(valor)}
                 />
+                <CampoTexto 
+                    obrigatorio={true}
+                    label="Contato do vendedor"
+                    placeholder="Informe o seu número de contato"
+                    valor={contato}
+                    aoAlterado={valor => setContato(valor)}
+                />
                 <CampoTexto
                     obrigatorio={true}
                     label="Produto"
                     placeholder="Digite o nome do produto"
-                    valor={cargo}
-                    aoAlterado={valor => setCargo(valor)}
+                    valor={produto}
+                    aoAlterado={valor => setProduto(valor)}
                 />
                 <CampoTexto
                     obrigatorio={true}
@@ -53,8 +64,8 @@ const Formulario = (props) => {
                     obrigatorio={true}
                     label="Categoria"
                     itens={props.times}
-                    valor={time}
-                    aoAlterado={valor => setTime(valor)}
+                    valor={categoria}
+                    aoAlterado={valor => setCategoria(valor)}
                 />
                 <Botao>
                     Criar Card

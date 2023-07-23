@@ -6,7 +6,7 @@ import Time from './componentes/Time/index.js';
 
 function App() {
 
-  const times = [
+  const categorias = [
     {
       nome: 'Frutas e Vegetais',
       corPrimaria: '#57C278',
@@ -37,17 +37,11 @@ function App() {
       corPrimaria: '#FFBA05',
       corSecundaria: '#FFF5D9'
     },
-    {
-      nome: 'Produtos Naturais e Cosméticos',
-      corPrimaria: '#FF8A29',
-      corSecundaria: '#FFEEDF'
-    },
   ]
 
   const [colaboradores, setColaboradores] = useState([])
 
   const aoNovoColaboradorCadastrado = (colaborador) => {
-    console.log(colaborador)
     setColaboradores([...colaboradores, colaborador]) //concatenando todos os colaboradores anteriores com o novo colaborador recebido e alterando (atualizando) o state do array colaboradores
   }
 
@@ -57,12 +51,12 @@ function App() {
       <Menu />
       <Carrossel />
       <Formulario
-      times={times.map(time => time.nome)} // Passando como props para o componente Formulário apenas o nome de cada objeto do array times
+      times={categorias.map(categoria => categoria.nome)} // Passando como props para o componente Formulário apenas o nome de cada objeto do array categorias
       aoColaboradorCadastrado={colaborador => aoNovoColaboradorCadastrado(colaborador)}
       />
 
-      {times.map(time => {
-        return <Time colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)} key={time.nome} nome={time.nome} corPrimaria={time.corPrimaria} corSecundaria={time.corSecundaria} />
+      {categorias.map(categoria => {
+        return <Time colaboradores={colaboradores.filter(colaborador => colaborador.categoria === categoria.nome)} key={categoria.nome} nome={categoria.nome} corPrimaria={categoria.corPrimaria} corSecundaria={categoria.corSecundaria} />
       })}
 
     </div>
