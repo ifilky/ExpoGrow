@@ -4,7 +4,7 @@ const Menu = () => {
     return (
         <header className='menu'>
             <div>
-                <img src='/img/logotipo.png' alt='logo da marca javacoffee'/>
+                <img src='/img/logotipo.png' alt='logo da expogrow'/>
                 <h1>ExpoGrow</h1>
             </div>
             <nav>

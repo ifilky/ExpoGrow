@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Carrossel from './componentes/Carrossel/index.js';
 import Formulario from './componentes/Formulário/index.js';
 import Menu from './componentes/Menu/index.js';
-import Time from './componentes/Time/index.js';
+import Categoria from './componentes/Categoria/index.js';
+import Rodape from './componentes/Rodape/index.js';
 
 function App() {
 
@@ -56,9 +57,9 @@ function App() {
       />
 
       {categorias.map(categoria => {
-        return <Time colaboradores={colaboradores.filter(colaborador => colaborador.categoria === categoria.nome)} key={categoria.nome} nome={categoria.nome} corPrimaria={categoria.corPrimaria} corSecundaria={categoria.corSecundaria} />
+        return <Categoria colaboradores={colaboradores.filter(colaborador => colaborador.categoria === categoria.nome)} key={categoria.nome} nome={categoria.nome} corPrimaria={categoria.corPrimaria} corSecundaria={categoria.corSecundaria} />
       })}
-
+    <Rodape />
     </div>
   );
 }
