@@ -1,14 +1,14 @@
 import Colaborador from "../Colaborador";
+import hexToRgba from "hex-to-rgba";
 import "./Categoria.css";
 
-const Categoria = ({ categorias, colaboradores, corSecundaria, corPrimaria, nome, aoDeletar, mudarCor }) => {
-  const corFundo = { backgroundColor: corSecundaria };
+const Categoria = ({ categoria, colaboradores, aoDeletar, mudarCor }) => {
 
   return (
     colaboradores.length > 0 && (
-      <section className="time" style={corFundo}>
-        <input value={corPrimaria} onChange={(event) => mudarCor(event.target.value, categorias.id)} type="color" className="input-color"/>
-        <h3 style={{ borderColor: corPrimaria }}>{nome}</h3>
+      <section className="time" style={{ backgroundColor: hexToRgba(categoria.cor, "0.6")}}>
+        <input value={categoria.cor} onChange={(event) => mudarCor(event.target.value, categoria.id)} type="color" className="input-color"/>
+        <h3 style={{ borderColor: categoria.cor }}>{categoria.nome}</h3>
         <div className="colaboradores">
           {colaboradores.map((colaborador) => {
             return (
@@ -19,7 +19,7 @@ const Categoria = ({ categorias, colaboradores, corSecundaria, corPrimaria, nome
                 contato={colaborador.contato}
                 produto={colaborador.produto}
                 imagem={colaborador.imagem}
-                corCard={corPrimaria}
+                corCard={categoria.cor}
                 aoDeletar={aoDeletar}
               />
             );

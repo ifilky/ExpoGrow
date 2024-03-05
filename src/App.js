@@ -11,38 +11,32 @@ function App() {
     {
       id: uuidv4(),
       nome: "Frutas e Vegetais",
-      corPrimaria: "#57C278",
-      corSecundaria: "#D9F7E9",
+      cor: "#57C278"
     },
     {
       id: uuidv4(),
       nome: "Hortaliças e Folhas Verdes",
-      corPrimaria: "#82CFFA",
-      corSecundaria: "#E8F8FF",
+      cor: "#82CFFA",
     },
     {
       id: uuidv4(),
       nome: "Produtos Lácteos",
-      corPrimaria: "#A6D157",
-      corSecundaria: "#F0F8E2",
+      cor: "#A6D157",
     },
     {
       id: uuidv4(),
       nome: "Ovos",
-      corPrimaria: "#E06B69",
-      corSecundaria: "#FDE7E8",
+      cor: "#E06B69",
     },
     {
       id: uuidv4(),
       nome: "Carnes e Aves",
-      corPrimaria: "#DB6EBF",
-      corSecundaria: "#FAE9F5",
+      cor: "#DB6EBF",
     },
     {
       id: uuidv4(),
       nome: "Produtos de Panificação",
-      corPrimaria: "#FFBA05",
-      corSecundaria: "#FFF5D9",
+      cor: "#FFBA05",
     },
   ]);
 
@@ -298,10 +292,14 @@ function App() {
   function mudarCor(cor, id){
     setCategorias(categorias.map(categoria => {
       if(categoria.id === id){
-        categoria.corPrimaria = cor
+        categoria.cor = cor
       }
       return categoria;
     }))
+  }
+
+  function cadastrarCategoria(novaCategoria){
+    setCategorias([ ...categorias, {... novaCategoria, id: uuidv4()}]) 
   }
 
   return (
@@ -309,7 +307,8 @@ function App() {
       <Menu />
       <Carrossel />
       <Formulario
-        times={categorias.map((categoria) => categoria.nome)} // Passando como props para o componente Formulário apenas o nome de cada objeto do array categorias
+        cadastrarCategoria={cadastrarCategoria}
+        categorias={categorias.map((categoria) => categoria.nome)} // Passando como props para o componente Formulário apenas o nome de cada objeto do array categorias
         aoColaboradorCadastrado={(colaborador) =>
           aoNovoColaboradorCadastrado(colaborador)
         }
@@ -318,15 +317,13 @@ function App() {
       {categorias.map((categoria) => {
         return (
           <Categoria
-            colaboradores={colaboradores.filter(
-              (colaborador) => colaborador.categoria === categoria.nome
-            )}
-            key={categoria.nome}
-            nome={categoria.nome}
-            corPrimaria={categoria.corPrimaria}
-            corSecundaria={categoria.corSecundaria}
-            aoDeletar={deletarColaborador}
-            mudarCor={mudarCor}
+          key={categoria.id}
+          categoria={categoria}
+          aoDeletar={deletarColaborador}
+          mudarCor={mudarCor}
+          colaboradores={colaboradores.filter(
+            (colaborador) => colaborador.categoria === categoria.nome
+          )}
           />
         );
       })}
