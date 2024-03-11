@@ -2,7 +2,7 @@ import Colaborador from "../Colaborador";
 import hexToRgba from "hex-to-rgba";
 import "./Categoria.css";
 
-const Categoria = ({ categoria, colaboradores, aoDeletar, mudarCor }) => {
+const Categoria = ({ categoria, colaboradores, aoDeletar, mudarCor, aoFavoritar }) => {
 
   return (
     colaboradores.length > 0 && (
@@ -15,12 +15,14 @@ const Categoria = ({ categoria, colaboradores, aoDeletar, mudarCor }) => {
               <Colaborador
                 key={colaborador.id}
                 id={colaborador.id}
+                colaborador={colaborador}
                 nome={colaborador.nome}
                 contato={colaborador.contato}
                 produto={colaborador.produto}
                 imagem={colaborador.imagem}
                 corCard={categoria.cor}
                 aoDeletar={aoDeletar}
+                aoFavoritar={aoFavoritar}
               />
             );
           })}

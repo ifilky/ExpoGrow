@@ -73,6 +73,7 @@ function App() {
     },
     {
       id: uuidv4(),
+      favorito: false,
       nome: "PAULO SILVEIRA",
       contato: "(11) 98155-6783",
       produto: "Produto",
@@ -92,6 +93,7 @@ function App() {
     },
     {
       id: uuidv4(),
+      favorito: false,
       nome: "DANIEL ARTINE",
       contato: "(11) 98155-6783",
       produto: "Produto",
@@ -161,6 +163,7 @@ function App() {
     },
     {
       id: uuidv4(),
+      favorito: false,
       nome: "JULIANA AMOASEI",
       contato: "(82) 40028922",
       produto: "Produto",
@@ -190,6 +193,7 @@ function App() {
     },
     {
       id: uuidv4(),
+      favorito: false,
       nome: "PAULO SILVEIRA",
       contato: "(11) 98155-6783",
       produto: "Produto",
@@ -209,6 +213,7 @@ function App() {
     },
     {
       id: uuidv4(),
+      favorito: false,
       nome: "DANIEL ARTINE",
       contato: "(11) 98155-6783",
       produto: "Produto",
@@ -228,6 +233,7 @@ function App() {
     },
     {
       id: uuidv4(),
+      favorito: false,
       nome: "PAULO SILVEIRA",
       contato: "(11) 98155-6783",
       produto: "Produto",
@@ -299,7 +305,16 @@ function App() {
   }
 
   function cadastrarCategoria(novaCategoria){
-    setCategorias([ ...categorias, {... novaCategoria, id: uuidv4()}]) 
+    setCategorias([ ...categorias, {...novaCategoria, id: uuidv4()}]) 
+  }
+
+  function resolverFavorito(id){
+    setColaboradores(colaboradores.map(colaborador => {
+      if(colaborador.id === id){
+        colaborador.favorito = !colaborador.favorito
+      }
+      return colaborador
+    }))
   }
 
   return (
@@ -321,6 +336,7 @@ function App() {
           categoria={categoria}
           aoDeletar={deletarColaborador}
           mudarCor={mudarCor}
+          aoFavoritar={resolverFavorito}
           colaboradores={colaboradores.filter(
             (colaborador) => colaborador.categoria === categoria.nome
           )}
